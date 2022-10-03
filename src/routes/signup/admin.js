@@ -13,7 +13,7 @@ module.exports = (db) => {
   router.get("/", (req, res) => {//admin
     db.query(`SELECT * FROM users WHERE isAdmin = true;`)
       .then(data =>
-        res.json({admin: data.rows[0]})
+        res.json(data.rows[0])
       )
       .catch(err => {
         res
