@@ -42,7 +42,7 @@ module.exports = (db) => {
     console.log("hello!");
     db.query(`SELECT * FROM gym_capacity WHERE date = $1;`, [req.params.date])
       .then(data => {
-        res.json({ gymCapacity : data.rows[0] });
+        res.json({ gymCapacity : data.rows });
       })
       .catch(err => {
         res
