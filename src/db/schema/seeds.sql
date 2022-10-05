@@ -10,10 +10,11 @@ INSERT INTO bulletin_board (title, description, isActive) VALUES ('Out of Servic
 
 INSERT INTO gym_capacity (day, date, time, number_of_people)
 VALUES 
-('Monday', '2022-09-22', '1 PM', 50),
-('Monday', '2022-09-23', '1 PM', 60),
-('Monday', '2022-09-24', '1 PM', 70),
-('Monday', '2022-09-25', '1 PM', 80);
+('Monday', '2022-09-22', '1pm', 50),
+('Monday', '2022-09-23', '1pm', 40),
+('Monday', '2022-09-24', '1pm', 45),
+('Monday', '2022-09-25', '1pm', 45),
+('Monday', '2022-09-25', '3pm', 35);
 
 INSERT INTO 
 room_bookings (room_id, user_id, day_id, time, current_capacity_level) 
