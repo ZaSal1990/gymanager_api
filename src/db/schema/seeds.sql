@@ -5,8 +5,8 @@ INSERT INTO rooms(name, max_capacity_level) VALUES ('Multi-purpose Room', 100);
 
 INSERT INTO days (name) VALUES ('Monday');
 
-INSERT INTO bulletin_board (title, description, isActive) VALUES ('Out of Service Alert', 'This is to inform that men washrooms on the main floor are currently out of service. Please use washrooms on teh first level until repairs complete. We appologize for any inconvenience.', true),
-('Out of Service Alert', 'This is to inform that men washrooms on the first floor are currently out of service. Please use washrooms on teh first level until repairs complete. We appologize for any inconvenience.', true);
+INSERT INTO bulletin_board (title, description, isActive, created_at) VALUES ('Out of Service Alert', 'This is to inform that men washrooms on the main floor are currently out of service. Please use washrooms on teh first level until repairs complete. We appologize for any inconvenience.', true, '2022-10-04 19:30:55'),
+('Washroom Fixed', 'This is to inform that men washrooms on the first floor is fixed.', true, '2022-10-05 19:30:55');
 
 INSERT INTO gym_capacity (day, date, time, number_of_people)
 VALUES 
