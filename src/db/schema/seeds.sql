@@ -5,15 +5,16 @@ INSERT INTO rooms(name, max_capacity_level) VALUES ('Multi-purpose Room', 100);
 
 INSERT INTO days (name) VALUES ('Monday'), ('Tuesday'), ('Wednesday'),('Thursday');
 
-INSERT INTO bulletin_board (title, description, isActive) VALUES ('Out of Service Alert', 'This is to inform that men washrooms on the main floor are currently out of service. Please use washrooms on teh first level until repairs complete. We appologize for any inconvenience.', true),
-('Out of Service Alert', 'This is to inform that men washrooms on the first floor are currently out of service. Please use washrooms on teh first level until repairs complete. We appologize for any inconvenience.', true);
+INSERT INTO bulletin_board (title, description, isActive, created_at) VALUES ('Out of Service Alert', 'This is to inform that men washrooms on the main floor are currently out of service. Please use washrooms on teh first level until repairs complete. We appologize for any inconvenience.', true, '2022-10-04 19:30:55'),
+('Washroom Fixed', 'This is to inform that men washrooms on the first floor is fixed.', true, '2022-10-05 19:30:55');
 
 INSERT INTO gym_capacity (day, date, time, number_of_people)
 VALUES 
-('Monday', '2022-09-22', '1 PM', 50),
-('Monday', '2022-09-23', '1 PM', 60),
-('Monday', '2022-09-24', '1 PM', 70),
-('Monday', '2022-09-25', '1 PM', 80);
+('Monday', '2022-09-22', '1pm', 50),
+('Monday', '2022-09-23', '1pm', 40),
+('Monday', '2022-09-24', '1pm', 45),
+('Monday', '2022-09-25', '1pm', 45),
+('Monday', '2022-09-25', '3pm', 35);
 
 INSERT INTO 
 room_bookings (room_id, username, user_id, day_id, time, current_capacity_level) 

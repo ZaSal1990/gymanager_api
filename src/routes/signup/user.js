@@ -21,6 +21,19 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  router.get("/:email/:password", (req, res) => {//user
+    db.query(`SELECT * FROM users WHERE email = $1 AND password = $2;`, [req.params.email, req.params.password])
+      .then(data =>
+        res.json(data.rows)
+      )
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   router.post("/", (req, res) => {//regsiter user
     db.query(`INSERT INTO users(name, email, password, isAdmin) VALUES ($1, $2, $3, $4) RETURNING id;`, [req.body.username, req.body.email, req.body.password, false])
       .then(newUser =>
