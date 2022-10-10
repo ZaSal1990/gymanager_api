@@ -5,6 +5,8 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
+
+
 const express = require('express');
 const router = express.Router();
 
@@ -70,8 +72,17 @@ module.exports = (db) => {
     const dayId = Number(req.body.day);
     const roomId = Number(req.body.room);
 
-    db.query(`INSERT INTO room_bookings (room_id, username, user_id, day_id, time) VALUES ($1, $2, $3, $4, $5) RETURNING *;`, [roomId, req.body.user, 1, dayId, req.body.time]) //hard code params userID since no validation or login taking place
+    db.query(`INSERT INTO room_bookings (room_id, username, user_id, day_id, time) VALUES ($1, $2, $3, $4, $5) RETURNING *;`, [roomId, req.body.user, 1, dayId, req.body.time]); //hard code params userID since no validation or login taking place
+    
+    return db.query(`SELECT room_bookings.id, room_bookings.time, rooms.name AS room, room_bookings.username AS user, days.name AS day 
+    FROM room_bookings 
+    JOIN rooms ON room_bookings.room_id = rooms.id
+    JOIN users ON room_bookings.user_id = users.id
+    JOIN days ON room_bookings.day_id = days.id
+    ORDER BY id DESC LIMIT 1; 
+  `)
       .then(({ rows: newBooking }) => {
+        console.log(newBooking)
         res.json(
           newBooking.reduce(
             (previous, current) => ({ ...previous, [current.id]: current }),
@@ -89,4 +100,4 @@ module.exports = (db) => {
 };
 
 
-
+  
