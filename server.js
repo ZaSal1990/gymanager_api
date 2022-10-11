@@ -1,5 +1,5 @@
 //load .env data into process.env
-require("dotenv").config();
+require("dotenv").config({debug: true});
 
 // Web server config
 const PORT = 8080;
