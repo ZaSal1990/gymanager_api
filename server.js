@@ -1,10 +1,8 @@
 //load .env data into process.env
-const path = require("path");
-const PATH = path.resolve(__dirname, "./.env");
-require("dotenv").config({ path: PATH });
+require("dotenv").config({debug: true});
 
 // Web server config
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 //const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
