@@ -13,7 +13,7 @@ module.exports = (db) => {
   router.get("/", (req, res) => {//user
     db.query(`SELECT * FROM users WHERE isAdmin = false;`)
       .then(data =>
-        res.json(data.rows[0])
+        res.json(data.rows)
       )
       .catch(err => {
         res
@@ -36,9 +36,10 @@ module.exports = (db) => {
 
   router.post("/", (req, res) => {//regsiter user
     db.query(`INSERT INTO users(name, email, password, isAdmin) VALUES ($1, $2, $3, $4) RETURNING id;`, [req.body.username, req.body.email, req.body.password, false])
-      .then(newUser =>
+      .then(newUser => {
         console.log(`New user ${newUser.rows[0].id} has been created!`)
-      )
+        res.json({ success: "Success" })
+      })
       .catch(err => {
         res
           .status(500)
